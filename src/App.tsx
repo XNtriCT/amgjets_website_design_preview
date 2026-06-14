@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Shield, Plane, Users, Star, Award, ChevronDown, CheckCircle, Navigation, LayoutList, CheckSquare } from 'lucide-react';
 import Header from './components/Header';
@@ -16,6 +16,68 @@ import ScrollVideoCanvas from './components/ScrollVideoCanvas';
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
+  // 3D Passenger Window Interactive Pull-Down Blind State
+  const [blindHeight, setBlindHeight] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const windowRef = useRef<HTMLDivElement | null>(null);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    e.preventDefault();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+  };
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!windowRef.current) return;
+      const rect = windowRef.current.getBoundingClientRect();
+      const relativeY = e.clientY - rect.top;
+      const percentage = Math.min(Math.max((relativeY / rect.height) * 100, 0), 100);
+      setBlindHeight(percentage);
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      setBlindHeight(0); // Automatically spring back up
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!windowRef.current || e.touches.length === 0) return;
+      const rect = windowRef.current.getBoundingClientRect();
+      const relativeY = e.touches[0].clientY - rect.top;
+      const percentage = Math.min(Math.max((relativeY / rect.height) * 100, 0), 100);
+      setBlindHeight(percentage);
+    };
+
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+      setBlindHeight(0); // Automatically spring back up
+    };
+
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchend', handleTouchEnd);
+    return () => {
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isDragging]);
 
   // Set up passive scroll observer to highlight modern navigation anchors
   useEffect(() => {
@@ -232,20 +294,45 @@ export default function App() {
       <section id="about" className="py-24 bg-transparent relative text-left">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Column 1: Immersive 3D Aircraft Passenger Window */}
-            <div className="lg:col-span-5 relative flex items-center justify-center py-6">
+            {/* Column 1: Immersive 3D Circular Aircraft Cabin Window */}
+            <div className="lg:col-span-5 relative flex items-center justify-center py-6 select-none">
               <div className="cabin-window-outer gold-glow">
                 <div className="cabin-window-bezel">
-                  <div className="cabin-window-inner">
+                  <div 
+                    ref={windowRef}
+                    className="cabin-window-inner"
+                  >
                     <img
                       src="/images/about-us.webp"
                       alt="Aircraft Management Group Team on the tarmac"
-                      className="w-full h-full object-cover brightness-[0.8] hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover brightness-[0.85]"
+                      draggable="false"
                     />
                     <div className="cabin-window-glass" />
+                    <div className="cabin-window-sheen" />
                     
-                    {/* Subtle Window Shade Handle Visual */}
-                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full bg-white/20 z-20 pointer-events-none" />
+                    {/* Interactive Pull-Down Window Blind */}
+                    <div 
+                      style={{ 
+                        height: `${blindHeight}%`,
+                        transition: isDragging ? 'none' : 'height 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1)' 
+                      }}
+                      className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#EAE9E1] to-[#C0BEB4] dark:from-[#222933] dark:to-[#111419] border-b-[8px] border-[#a5a399] dark:border-[#080a0d] z-30 shadow-2xl flex flex-col justify-end items-center pb-3"
+                    >
+                      {/* Pull Down Handle */}
+                      <div 
+                        onMouseDown={handleMouseDown}
+                        onTouchStart={handleTouchStart}
+                        className="w-20 h-4.5 rounded-full bg-[#bcbab0] dark:bg-[#1C222B] border border-[#a2a095] dark:border-[#2a2e38] shadow-md cursor-ns-resize flex items-center justify-center select-none active:scale-95 transition-transform"
+                        title="Drag down to close shade"
+                      >
+                        <div className="w-10 h-1 rounded-full bg-white/30 dark:bg-white/10" />
+                      </div>
+                    </div>
+
+                    {/* Left/Right Shade Tracks */}
+                    <div className="absolute inset-y-0 left-0 w-0.5 bg-black/15 z-25 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-0.5 bg-black/15 z-25 pointer-events-none" />
                   </div>
                 </div>
               </div>

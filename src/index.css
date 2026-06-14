@@ -235,61 +235,67 @@ html:not(.dark) #contact textarea:focus {
    ========================================================================== */
 .cabin-window-outer {
   position: relative;
-  aspect-ratio: 4 / 3; /* Wide aspect ratio to show the tarmac group photo without cropping */
+  aspect-ratio: 1 / 1; /* Circular aspect ratio for 1:1 image representation */
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
   margin: 0 auto;
-  border-radius: 60px; /* Authentic aircraft window rounded shape */
-  padding: 22px;
+  border-radius: 50%; /* Perfect circular shape as requested */
+  padding: 24px;
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   overflow: hidden;
   
-  /* Skeuomorphic cabin wall panel in light mode */
-  background: #EAE9E1;
-  background-image: linear-gradient(135deg, #F3F2EB 0%, #D8D6CE 100%);
+  /* Seamless blending: matches page background variables exactly and scoops inwards */
+  background: var(--bg-main) !important;
   box-shadow: 
-    0 25px 55px -12px rgba(0, 0, 0, 0.15),
-    inset 0 3px 6px rgba(255, 255, 255, 0.95),
-    inset 0 -6px 12px rgba(0, 0, 0, 0.06),
-    0 0 0 1px rgba(22, 23, 26, 0.05);
+    /* Soft ambient outer drop shadow */
+    0 25px 55px -12px rgba(0, 0, 0, 0.08),
+    /* 3D wall recess scoop shadow curving inward from page bg */
+    inset 0 20px 40px rgba(0, 0, 0, 0.06),
+    inset 0 -20px 40px rgba(255, 255, 255, 0.7),
+    /* Rim bevel highlight */
+    0 2px 4px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(22, 23, 26, 0.03);
 }
 
 .dark .cabin-window-outer {
-  /* Skeuomorphic cabin wall panel in dark mode */
-  background: #191E25;
-  background-image: linear-gradient(135deg, #222933 0%, #111419 100%);
+  background: var(--bg-main) !important;
   box-shadow: 
-    0 25px 55px -12px rgba(0, 0, 0, 0.55),
-    inset 0 1px 2px rgba(255, 255, 255, 0.08),
-    inset 0 -8px 20px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(0, 0, 0, 0.4);
+    0 25px 55px -12px rgba(0, 0, 0, 0.45),
+    inset 0 20px 40px rgba(0, 0, 0, 0.75),
+    inset 0 -20px 40px rgba(255, 255, 255, 0.01),
+    0 1px 2px rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.01);
 }
 
-/* Inner Recessed Bezel (Angled Cavity Detail) */
+/* Inner Recessed Bezel (Angled Cavity Detail matching the reference image) */
 .cabin-window-bezel {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 44px;
-  padding: 10px;
+  border-radius: 50%;
+  padding: 12px;
   
-  /* Inward bevel depth gradient */
-  background: #D5D3C8;
-  background-image: linear-gradient(135deg, #DFDDD4 0%, #C0BEB4 100%);
+  /* Inward bevel depth gradient mimicking molded plastic window frame */
+  background: #E8E7E0;
+  background-image: linear-gradient(135deg, #F5F4EF 0%, #D2D0C6 100%);
   box-shadow: 
-    inset 0 14px 28px rgba(0, 0, 0, 0.15),
-    inset 0 -14px 28px rgba(255, 255, 255, 0.45),
-    0 4px 8px rgba(0, 0, 0, 0.04);
+    inset 0 16px 32px rgba(0, 0, 0, 0.12),
+    inset 0 -16px 32px rgba(255, 255, 255, 0.8),
+    /* Bezel shadow */
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    /* Outer highlight ring */
+    0 0 0 1px rgba(255, 255, 255, 0.9);
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .dark .cabin-window-bezel {
-  background: #0F1216;
-  background-image: linear-gradient(135deg, #161B21 0%, #080A0D 100%);
+  background: #191E25;
+  background-image: linear-gradient(135deg, #202732 0%, #111419 100%);
   box-shadow: 
-    inset 0 16px 32px rgba(0, 0, 0, 0.85),
-    inset 0 -10px 20px rgba(255, 255, 255, 0.02),
-    0 2px 4px rgba(0, 0, 0, 0.4);
+    inset 0 18px 36px rgba(0, 0, 0, 0.75),
+    inset 0 -18px 36px rgba(255, 255, 255, 0.02),
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 /* Inner Window Gasket / Seal */
@@ -297,50 +303,74 @@ html:not(.dark) #contact textarea:focus {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 36px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 4px solid #1e2229; /* Realistic rubber sealing gasket */
+  border: 4px solid #1E2229; /* Dark rubber sealing gasket */
   box-shadow: 
-    0 2px 6px rgba(0, 0, 0, 0.25),
-    inset 0 8px 16px rgba(0, 0, 0, 0.35);
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    inset 0 8px 16px rgba(0, 0, 0, 0.3);
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .dark .cabin-window-inner {
   border-color: #06080a;
   box-shadow: 
-    0 1px 4px rgba(0, 0, 0, 0.85),
-    inset 0 10px 20px rgba(0, 0, 0, 0.65);
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    inset 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* Glass pane with high-fidelity reflection layers */
+/* Glass pane with reflection layers */
 .cabin-window-glass {
   position: absolute;
   inset: 0;
-  border-radius: 32px;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 20;
   
-  /* Diagonal glass glare reflections */
+  /* Base reflections */
   background: linear-gradient(
     135deg, 
-    rgba(255, 255, 255, 0.22) 0%, 
-    rgba(255, 255, 255, 0.08) 25%, 
-    rgba(255, 255, 255, 0) 50%, 
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.18) 0%, 
+    rgba(255, 255, 255, 0.05) 35%, 
+    rgba(255, 255, 255, 0) 60%, 
+    rgba(255, 255, 255, 0.04) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .dark .cabin-window-glass {
   background: linear-gradient(
     135deg, 
     rgba(255, 255, 255, 0.08) 0%, 
-    rgba(255, 255, 255, 0.02) 30%, 
-    rgba(255, 255, 255, 0) 60%, 
+    rgba(255, 255, 255, 0.01) 40%, 
+    rgba(255, 255, 255, 0) 70%, 
     rgba(255, 255, 255, 0.01) 100%
   );
   border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Glass sheen diagonal sweep on mouse hover */
+.cabin-window-sheen {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translate(-35%, -35%) rotate(-45deg);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 21;
+  pointer-events: none;
+}
+
+.cabin-window-outer:hover .cabin-window-sheen {
+  transform: translate(35%, 35%) rotate(-45deg);
 }
 
 /* Skeuomorphic pressure-relief vent hole (Breather Hole) */
@@ -365,4 +395,5 @@ html:not(.dark) #contact textarea:focus {
     0 0.5px 0 rgba(255, 255, 255, 0.05),
     inset 0 0.5px 0.5px rgba(0, 0, 0, 0.85);
 }
+
 
