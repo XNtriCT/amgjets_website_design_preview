@@ -80,7 +80,7 @@
   {
     "name": "Boston",
     "filename": "listing.php-13.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_97826.jpg",
+    "image": "/manage/product_photo_stock/Boston.webp",
     "description": "Boston is Massachusetts' capital and largest city. Founded in 1630, it's one of the oldest cities in the U.S. The key role it played in the American Revolution is highlighted on the Freedom Trail, a 2.5-mile walking route of historic sites that tells the story of the nation's founding. One stop, former meeting house Faneuil Hall, is a popular marketplace."
   },
   {
@@ -212,7 +212,7 @@
   {
     "name": "Greensboro",
     "filename": "listing.php-35.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_118780.jpg",
+    "image": "/manage/product_photo_stock/Greensboro.webp",
     "description": "Greensboro is a city in the U.S. state of North Carolina. It is the third-largest city by population in North Carolina and the county seat and largest city in Guilford County and the surrounding Piedmont Triad metropolitan region."
   },
   {
@@ -236,7 +236,7 @@
   {
     "name": "Homestead",
     "filename": "listing.php-39.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_136472.jpg",
+    "image": "/manage/product_photo_stock/Homestead.webp",
     "description": "Homestead is a city within Miami-Dade County in the U.S. state of Florida, between Biscayne National Park to the east and Everglades National Park to the west. Homestead is primarily a Miami suburb and a major agricultural area."
   },
   {
@@ -278,7 +278,7 @@
   {
     "name": "Kahului",
     "filename": "listing.php-46.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_99602.jpg",
+    "image": "/manage/product_photo_stock/Kahului.webp",
     "description": "Kahului is a census-designated place in Maui County, on the island of Maui, in the U.S. state of Hawaii. Kahului hosts Maui's main airport, deep-draft harbor, light industrial areas, and commercial shopping centers."
   },
   {
@@ -308,7 +308,7 @@
   {
     "name": "Los Angeles",
     "filename": "listing.php-51.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_127297.jpg",
+    "image": "/manage/product_photo_stock/Los Angeles.webp",
     "description": "Los Angeles is a sprawling Southern California city and the center of the nation's film and television industry. Near its iconic Hollywood sign, studios such as Paramount Pictures, Universal and Warner Brothers offer behind-the-scenes tours. On Hollywood Boulevard, TCL Chinese Theatre displays celebrities' hand- and footprints, the Walk of Fame honors thousands of luminaries and vendors sell maps to stars' homes."
   },
   {
@@ -320,13 +320,13 @@
   {
     "name": "Manchester",
     "filename": "listing.php-53.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_172397.00_jpg_srz",
+    "image": "/manage/product_photo_stock/Manchester.webp",
     "description": "Manchester is a city on the Merrimack River in southern New Hampshire. The Currier Museum of Art features works by major American and European artists. It also operates the Frank Lloyd Wright-designed Zimmerman House. In an old fabric mill, the Millyard Museum traces how the nearby Amoskeag Falls shaped the city and its textile industry. Trails in sprawling Derryfield Park lead to the 19th-century Weston Observatory."
   },
   {
     "name": "Martha's Vineyard",
     "filename": "listing.php-54.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_176143.h",
+    "image": "/manage/product_photo_stock/Martha's Vineyard.webp",
     "description": "Martha's Vineyard, a Massachusetts island, sits in the Atlantic just south of Cape Cod. A longtime New England summer colony, it encompasses harbor towns and lighthouses, sandy beaches and farmland. It's accessible only by boat or air. Vineyard Haven, on the eastern end, is a ferry port and the island's commercial center. Oak Bluffs has Carpenter Gothic cottages and an iconic carousel."
   },
   {
@@ -440,7 +440,7 @@
   {
     "name": "Philadelphia",
     "filename": "listing.php-73.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_113556.jpg",
+    "image": "/manage/product_photo_stock/Philadelphia.webp",
     "description": "Philadelphia, Pennsylvania's largest city, is notable for its rich history, on display at the Liberty Bell, Independence Hall (where the Declaration of Independence and Constitution were signed) and other American Revolutionary sites. Also iconic are the steps of the Philadelphia Museum of Art, immortalized by Sylvester Stallone's triumphant run in the film \"Rocky.\""
   },
   {
@@ -524,7 +524,7 @@
   {
     "name": "Santa Ana",
     "filename": "listing.php-87.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_117096.jpeg",
+    "image": "/manage/product_photo_stock/Santa Ana.webp",
     "description": "Santa Ana is the county seat and second most populous city in Orange County, California. The United States Census Bureau estimated its 2011 population at 329,427, making Santa Ana the 57th most-populous city in the United States."
   },
   {
@@ -590,7 +590,7 @@
   {
     "name": "Tucson",
     "filename": "listing.php-98.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_114089.jpg",
+    "image": "/manage/product_photo_stock/Tucson.webp",
     "description": "Tucson is a city in Arizona's Sonoran Desert surrounded by multiple mountain ranges, including the Santa Catalinas. Reflecting its 19th-century beginnings are the restored mansions of its El Presidio Historic District and the adobe row houses of Barrio Historico. Home to the University of Arizona, Tuscon has many vintage shops, nightclubs and restaurants on Fourth Avenue near the campus."
   },
   {
@@ -668,7 +668,7 @@
   {
     "name": "College Football",
     "filename": "listing.php-111.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_106741.jpeg",
+    "image": "/manage/product_photo_stock/College Football.webp",
     "description": "College football is American football played by teams of student athletes fielded by American universities, colleges, and military academies, or Canadian football played by teams of student athletes fielded by Canadian universities."
   },
   {
@@ -680,7 +680,7 @@
   {
     "name": "Daytona Bike Week - March",
     "filename": "listing.php-113.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_141824.jpg",
+    "image": "/manage/product_photo_stock/Daytona Bike Week.webp",
     "description": "Daytona Beach Bike Week, also called Daytona Bike Week, is a motorcycle event and rally held annually in Daytona Beach, Florida. Approximately 500,000 people make their way to the rally area for the 10-day event."
   },
   {
@@ -692,7 +692,7 @@
   {
     "name": "Final Four - March",
     "filename": "listing.php-115.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_147216.jpg",
+    "image": "/manage/product_photo_stock/Final Four.webp",
     "description": "In American sports, the final four is the last four teams remaining in the NCAA Basketball Tournament."
   },
   {
@@ -746,7 +746,7 @@
   {
     "name": "Mardi Gras New Orleans - February",
     "filename": "listing.php-124.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_121538.jpg",
+    "image": "/manage/product_photo_stock/Mardi Gras New Orleans.webp",
     "description": "The holiday of Mardi Gras is celebrated in Southern Louisiana. Celebrations are concentrated for about two weeks before and through Shrove Tuesday, the day before Ash Wednesday."
   },
   {
@@ -842,7 +842,7 @@
   {
     "name": "Sundance Film Festival - January",
     "filename": "listing.php-140.html",
-    "image": "https://webcanvascms.com/manage/product_photo_stock/photo_133524.jpg",
+    "image": "/manage/product_photo_stock/Sundance Film Festival.webp",
     "description": "The Sundance Film Festival, a program of the Sundance Institute, is an American film festival that takes place annually in Park City, Utah. With over 46,660 attendees in 2016, it is the largest independent film festival in the United States."
   },
   {

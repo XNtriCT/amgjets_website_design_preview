@@ -27,6 +27,7 @@ export default function ScrollVideoCanvas() {
     let scrollTriggerInstance: ScrollTrigger | null = null;
     let opacityTriggerInstance: ScrollTrigger | null = null;
     let rafId: number;
+    let renderRafId: number | null = null;
     let targetTime = 0;
     let currentTime = 0;
     let metadataLoaded = false;
@@ -59,10 +60,19 @@ export default function ScrollVideoCanvas() {
       ctx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
     };
 
+    // Standard requestAnimationFrame debouncer for canvas drawing
+    const requestRender = () => {
+      if (renderRafId !== null) return;
+      renderRafId = requestAnimationFrame(() => {
+        drawFrame();
+        renderRafId = null;
+      });
+    };
+
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      drawFrame();
+      requestRender();
     };
 
     window.addEventListener('resize', handleResize);
@@ -70,7 +80,7 @@ export default function ScrollVideoCanvas() {
 
     // Redraw on seeking finished to guarantee correct frame rendering
     const onSeeked = () => {
-      drawFrame();
+      requestRender();
       if (!isLoaded) {
         setIsLoaded(true);
       }
@@ -79,7 +89,7 @@ export default function ScrollVideoCanvas() {
 
     // Initial frame draw when video data starts loading
     const onLoadedData = () => {
-      drawFrame();
+      requestRender();
       // Draw first frame immediately
       video.currentTime = 0.001; // Tiny seek to trigger the first draw
     };
@@ -97,7 +107,7 @@ export default function ScrollVideoCanvas() {
         endTrigger: '#about',
         start: 'top top',
         end: 'top top',
-        scrub: true,
+        scrub: 1.2,
         onUpdate: (self) => {
           // Calculate the target video playhead position based on scroll progress
           targetTime = self.progress * duration;
@@ -109,7 +119,7 @@ export default function ScrollVideoCanvas() {
         trigger: '#about',
         start: 'top bottom',
         end: 'top top',
-        scrub: true,
+        scrub: 1.2,
         onUpdate: (self) => {
           canvas.style.setProperty('--canvas-opacity', String(1 - self.progress));
         },
@@ -120,13 +130,16 @@ export default function ScrollVideoCanvas() {
         // Interpolate current playhead to target playhead for zero lag and layout smoothness
         currentTime += (targetTime - currentTime) * 0.2;
 
-        if (Math.abs(currentTime - video.currentTime) > 0.005) {
-          video.currentTime = currentTime;
+        // Strict Hardware Seeking Gate
+        if (!video.seeking) {
+          if (Math.abs(currentTime - video.currentTime) > 0.005) {
+            video.currentTime = currentTime;
+          }
         }
 
-        // Draw frames in loop if not seeking to keep rendering updated
+        // Draw frames in loop if not seeking to keep rendering updated (using debouncer)
         if (!video.seeking) {
-          drawFrame();
+          requestRender();
         }
 
         rafId = requestAnimationFrame(updatePlayhead);
@@ -158,6 +171,9 @@ export default function ScrollVideoCanvas() {
         opacityTriggerInstance.kill();
       }
       cancelAnimationFrame(rafId);
+      if (renderRafId !== null) {
+        cancelAnimationFrame(renderRafId);
+      }
       
       video.pause();
       video.src = '';

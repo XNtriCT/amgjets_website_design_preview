@@ -40,6 +40,68 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Premium Magnetic Button Proximity Effect
+  useEffect(() => {
+    let elements: HTMLElement[] = [];
+    
+    // Periodically update the list of interactive elements (in case of dynamic renders)
+    const updateElementsList = () => {
+      elements = Array.from(document.querySelectorAll('button, a.bg-gradient-to-r, [data-magnetic]')) as HTMLElement[];
+    };
+    updateElementsList();
+    
+    // Run update on DOM changes
+    const observer = new MutationObserver(updateElementsList);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Skip on touch devices
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+
+      const cursorX = e.clientX;
+      const cursorY = e.clientY;
+
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        const rect = el.getBoundingClientRect();
+        
+        // Skip elements not in the viewport or not visible
+        if (rect.bottom < 0 || rect.top > window.innerHeight || rect.right < 0 || rect.left > window.innerWidth) {
+          el.style.transform = '';
+          continue;
+        }
+
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const dx = cursorX - centerX;
+        const dy = cursorY - centerY;
+        const distance = Math.hypot(dx, dy);
+        
+        const maxDistance = 75; // Proximity threshold
+        const pullForce = 0.15; // Delicate pull factor
+
+        if (distance < maxDistance) {
+          const ratio = (maxDistance - distance) / maxDistance;
+          const pullX = dx * pullForce * ratio;
+          const pullY = dy * pullForce * ratio;
+          
+          el.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
+          el.style.transform = `translate3d(${pullX}px, ${pullY}px, 0)`;
+        } else if (el.style.transform && el.style.transform !== 'translate3d(0px, 0px, 0px)') {
+          el.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          el.style.transform = 'translate3d(0, 0, 0)';
+        }
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   const navigateToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
     if (el) {
@@ -75,6 +137,8 @@ export default function App() {
           {/* High-end vector vignette masking - class-based visibility */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#090b0e] hero-vignette" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#090b0e]/90 via-transparent to-[#090b0e]/90 hero-vignette" />
+          {/* Light Mode Asymmetrical Editorial Gradient Mask */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(251,251,250,0.92)_0%,rgba(251,251,250,0.92)_25%,rgba(251,251,250,0)_60%)] dark:hidden pointer-events-none z-10" />
         </motion.div>
 
         {/* High Tech Grid Mesh Overlay */}
@@ -172,7 +236,7 @@ export default function App() {
             <div className="lg:col-span-5 relative">
               <div className="relative aspect-square md:max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden glass-panel border border-text-main/10 p-2 gold-glow">
                 <img
-                  src="/images/about-us.png"
+                  src="/images/about-us.webp"
                   alt="Aircraft Management Group Team on the tarmac"
                   className="w-full h-full object-cover rounded-xl brightness-[0.75]"
                 />

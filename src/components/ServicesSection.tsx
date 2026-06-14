@@ -23,7 +23,7 @@ export default function ServicesSection({ onRequestQuote }: ServicesSectionProps
         'Highest standards of safety and service',
         'Available 24 Hours / 7 Days a week'
       ],
-      imageUrl: '/images/charter.png'
+      imageUrl: '/images/Aircraft Charter Services.webp'
     },
     {
       id: 'management',
@@ -37,7 +37,7 @@ export default function ServicesSection({ onRequestQuote }: ServicesSectionProps
         'Professional pilot and crew recruitment',
         'Complete regulatory and flight compliance oversight'
       ],
-      imageUrl: '/images/about-us.png'
+      imageUrl: '/images/Turnkey Aircraft Management & Crew Staffing.webp'
     },
     {
       id: 'maintenance',
@@ -51,7 +51,7 @@ export default function ServicesSection({ onRequestQuote }: ServicesSectionProps
         'Detailed accounting tracking expenditures from fuel to crew accommodations',
         'Detailed invoicing and financial transparency'
       ],
-      imageUrl: '/images/services.png'
+      imageUrl: '/images/Certified Jet Maintenance & Accounting.webp'
     },
     {
       id: 'consulting',
@@ -65,7 +65,7 @@ export default function ServicesSection({ onRequestQuote }: ServicesSectionProps
         'Financing and final purchase assistance',
         'Expert brokerage advisory services'
       ],
-      imageUrl: '/images/charter.png'
+      imageUrl: '/images/Acquisitions & Consulting.webp'
     },
     {
       id: 'concierge',
@@ -79,7 +79,7 @@ export default function ServicesSection({ onRequestQuote }: ServicesSectionProps
         'Continuous flight planning and weather monitoring',
         'Available 24 Hours / 7 Days/Week'
       ],
-      imageUrl: '/images/services.png'
+      imageUrl: '/images/Concierge, Storage & Flight Scheduling.webp'
     }
   ];
 
