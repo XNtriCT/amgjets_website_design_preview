@@ -151,12 +151,11 @@ html:not(.dark) #emptylegs {
 /* 2. LIGHT CRYSTAL GLASSMORPHISM FOR CARDS & TABS */
 html:not(.dark) .glass-panel,
 html:not(.dark) .bg-navy-slate,
-html:not(.dark) [class*="bg-navy-slate/"],
+html:not(.dark) [class*="bg-navy-slate/"]:not(section),
 html:not(.dark) .bg-navy-dark\/40,
 html:not(.dark) #services button[id^="btn-service-"],
 html:not(.dark) #fleet button[id^="tab-category-"],
 html:not(.dark) #destinations button[class*="bg-navy-slate"],
-html:not(.dark) #emptylegs .bg-navy-slate\/50,
 html:not(.dark) #destinations .bg-navy-slate,
 html:not(.dark) #management .bg-navy-slate\/20,
 html:not(.dark) #management .bg-navy-slate\/30,
@@ -176,11 +175,10 @@ html:not(.dark) #contact [class*="bg-navy-slate/60"] {
 /* Interactive hover boundary transitions to warm champagne-gold frame hue */
 html:not(.dark) .glass-panel:hover,
 html:not(.dark) .bg-navy-slate:hover,
-html:not(.dark) [class*="bg-navy-slate/"]:hover,
+html:not(.dark) [class*="bg-navy-slate/"]:not(section):hover,
 html:not(.dark) #services button[id^="btn-service-"]:hover,
 html:not(.dark) #fleet button[id^="tab-category-"]:hover,
 html:not(.dark) #destinations button[class*="bg-navy-slate"]:hover,
-html:not(.dark) #emptylegs .bg-navy-slate\/50:hover,
 html:not(.dark) #destinations .bg-navy-slate:hover,
 html:not(.dark) #careers .bg-navy-slate:hover,
 html:not(.dark) #blog .bg-navy-slate:hover,
@@ -188,6 +186,19 @@ html:not(.dark) #contact .bg-navy-slate\/20:hover,
 html:not(.dark) div[id^="fleet-card-"]:hover {
   border-color: rgba(197, 164, 95, 0.45) !important;
   box-shadow: 0 10px 40px rgba(197, 164, 95, 0.04), 0 0 15px rgba(197, 164, 95, 0.08) !important;
+}
+
+/* Custom dark border frame for light mode empty legs display with subtle golden glow */
+html:not(.dark) #emptylegs .bg-navy-slate\/50 {
+  background: #090b0e !important; /* Premium dark background */
+  border: 1px solid rgba(22, 23, 26, 0.9) !important; /* Dark high-contrast outline */
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  box-shadow: 0 15px 45px rgba(197, 164, 95, 0.22), 0 0 25px rgba(197, 164, 95, 0.26) !important; /* Prominent golden glow for depth */
+}
+
+html:not(.dark) #emptylegs .bg-navy-slate\/50:hover {
+  border-color: rgba(197, 164, 95, 0.45) !important; /* Transition to gold border on hover */
+  box-shadow: 0 25px 60px rgba(197, 164, 95, 0.35), 0 0 35px rgba(197, 164, 95, 0.42) !important; /* Striking golden glow on hover */
 }
 
 /* Scrolled header navigation glassmorphism */
@@ -394,6 +405,103 @@ html:not(.dark) #contact textarea:focus {
   box-shadow: 
     0 0.5px 0 rgba(255, 255, 255, 0.05),
     inset 0 0.5px 0.5px rgba(0, 0, 0, 0.85);
+}
+
+/* ==========================================================================
+   PREMIUM HIGH-END EDITORIAL DARK-MODE CARD HOVER GLOW & BORDERS
+   ========================================================================== */
+
+/* Dark mode card base transitions */
+.dark .glass-panel,
+.dark .bg-navy-slate,
+.dark [class*="bg-navy-slate/"]:not(section),
+.dark .bg-navy-dark\/40,
+.dark #services button[id^="btn-service-"],
+.dark #fleet button[id^="tab-category-"],
+.dark #destinations button[class*="bg-navy-slate"],
+.dark #emptylegs .bg-navy-slate\/50,
+.dark #destinations .bg-navy-slate,
+.dark #management .bg-navy-slate\/20,
+.dark #management .bg-navy-slate\/30,
+.dark #management .bg-navy-slate\/40,
+.dark #careers .bg-navy-slate,
+.dark #blog .bg-navy-slate,
+.dark #contact .bg-navy-slate\/20,
+.dark #contact [class*="bg-navy-slate/60"],
+.dark footer .bg-navy-slate\/40,
+.dark div[id^="fleet-card-"] {
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Dark mode card hover highlights: golden border and subtle golden glow shadow */
+.dark .glass-panel:hover,
+.dark .bg-navy-slate:hover,
+.dark [class*="bg-navy-slate/"]:not(section):hover,
+.dark #services button[id^="btn-service-"]:hover,
+.dark #fleet button[id^="tab-category-"]:hover,
+.dark #destinations button[class*="bg-navy-slate"]:hover,
+.dark #emptylegs .bg-navy-slate\/50:hover,
+.dark #destinations .bg-navy-slate:hover,
+.dark #careers .bg-navy-slate:hover,
+.dark #blog .bg-navy-slate:hover,
+.dark #contact .bg-navy-slate\/20:hover,
+.dark #contact [class*="bg-navy-slate/60"]:hover,
+.dark footer .bg-navy-slate\/40:hover,
+.dark div[id^="fleet-card-"]:hover {
+  border-color: rgba(197, 164, 95, 0.45) !important;
+  box-shadow: 0 10px 40px rgba(197, 164, 95, 0.08), 0 0 20px rgba(197, 164, 95, 0.18) !important;
+}
+
+/* Dark mode card hover text color transition to luxury gold for titles and primary labels */
+.dark .glass-panel:hover h3,
+.dark .glass-panel:hover h4,
+.dark .glass-panel:hover h5,
+.dark .bg-navy-slate:hover h3,
+.dark .bg-navy-slate:hover h4,
+.dark .bg-navy-slate:hover h5,
+.dark [class*="bg-navy-slate/"]:not(section):hover h3,
+.dark [class*="bg-navy-slate/"]:not(section):hover h4,
+.dark [class*="bg-navy-slate/"]:not(section):hover h5,
+.dark #services button[id^="btn-service-"]:hover h4,
+.dark #fleet button[id^="tab-category-"]:hover h4,
+.dark #destinations button[class*="bg-navy-slate"]:hover h4,
+.dark #destinations .bg-navy-slate:hover h3,
+.dark #careers .bg-navy-slate:hover h4,
+.dark #blog .bg-navy-slate:hover h3,
+.dark div[id^="fleet-card-"]:hover h3 {
+  color: var(--luxury-gold) !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Integrity metrics specific footer cards subtitle text transition to text-main or gold on hover */
+.dark footer .bg-navy-slate\/40:hover span:last-child {
+  color: var(--text-main) !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Light mode card hover text color transition to luxury gold for menu selection buttons/tabs */
+html:not(.dark) #services button[id^="btn-service-"]:hover h4,
+html:not(.dark) #fleet button[id^="tab-category-"]:hover h4,
+html:not(.dark) #destinations button[class*="bg-navy-slate"]:hover h4 {
+  color: var(--luxury-gold) !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Integrity metrics specific footer cards subtitle text transition to text-main or gold on hover in light mode */
+html:not(.dark) footer .bg-navy-slate\/40:hover span:last-child {
+  color: var(--text-main) !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Subtle golden glow to window frame on hover in dark mode */
+.dark .cabin-window-outer:hover {
+  border-color: rgba(197, 164, 95, 0.45) !important;
+  box-shadow: 
+    0 25px 55px -12px rgba(0, 0, 0, 0.45),
+    inset 0 20px 40px rgba(0, 0, 0, 0.75),
+    inset 0 -20px 40px rgba(255, 255, 255, 0.01),
+    0 1px 2px rgba(255, 255, 255, 0.02),
+    0 0 35px rgba(197, 164, 95, 0.25) !important;
 }
 
 

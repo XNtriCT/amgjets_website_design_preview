@@ -25,7 +25,7 @@ interface DestinationsSectionProps {
 
 export default function DestinationsSection({ onRequestQuote }: DestinationsSectionProps) {
   const [activeTab, setActiveTab] = useState<'All' | 'Coastal' | 'Mountain' | 'Metropolitan'>('All');
-  const [isDirectoryOpen, setIsDirectoryOpen] = useState(false);
+  const [isDirectoryOpen, setIsDirectoryOpen] = useState(true);
   const [directorySearch, setDirectorySearch] = useState('');
   const [selectedDestDetail, setSelectedDestDetail] = useState<{
     name: string;
