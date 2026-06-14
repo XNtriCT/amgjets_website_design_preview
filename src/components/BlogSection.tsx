@@ -170,14 +170,18 @@ export default function BlogSection() {
       {/* Article Reader Overlay Modal */}
       <AnimatePresence>
         {readingArticle && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-dark/92 backdrop-blur-md">
+          <div 
+            onClick={() => setReadingArticle(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-dark/92 backdrop-blur-md cursor-pointer"
+          >
             <motion.div
               layout
               initial={{ scale: 0.95, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.95, y: 20, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-navy-slate border border-luxury-gold/20 rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative text-left"
+              onClick={(e) => e.stopPropagation()}
+              className="bg-navy-slate border border-luxury-gold/20 rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative text-left cursor-default"
             >
               <button
                 onClick={() => setReadingArticle(null)}

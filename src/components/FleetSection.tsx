@@ -443,19 +443,18 @@ export default function FleetSection({ onSelectAircraftForQuote, onRequestQuote 
       {/* Modal Spec Sheets */}
       <AnimatePresence>
         {selectedAircraft && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            id="spec-modal"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-dark/90 backdrop-blur-md"
+          <div 
+            onClick={() => setSelectedAircraft(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-dark/92 backdrop-blur-md cursor-pointer"
           >
             <motion.div
-              initial={{ scale: 0.95, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
-              transition={{ duration: 0.4 }}
-              className="glass-panel max-w-2xl w-full rounded-2xl overflow-hidden border border-luxury-gold/20 shadow-2xl relative"
+              layout
+              initial={{ scale: 0.95, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.95, y: 20, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-navy-slate max-w-2xl w-full rounded-2xl overflow-hidden border border-luxury-gold/20 shadow-2xl relative cursor-default"
             >
               {/* Close command */}
               <button
@@ -523,7 +522,7 @@ export default function FleetSection({ onSelectAircraftForQuote, onRequestQuote 
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </section>
