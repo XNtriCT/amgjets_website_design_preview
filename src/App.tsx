@@ -232,24 +232,34 @@ export default function App() {
       <section id="about" className="py-24 bg-transparent relative text-left">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Column 1: Image Frame */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-square md:max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden glass-panel border border-text-main/10 p-2 gold-glow">
-                <img
-                  src="/images/about-us.webp"
-                  alt="Aircraft Management Group Team on the tarmac"
-                  className="w-full h-full object-cover rounded-xl brightness-[0.75]"
-                />
-                <div className="absolute inset-2 bg-gradient-to-t from-navy-dark via-transparent to-transparent rounded-xl" />
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-lg bg-navy-slate/90 backdrop-blur border border-text-main/10">
-                  <div className="flex items-center space-x-2 text-luxury-gold mb-1">
-                    <Star className="w-4 h-4 fill-luxury-gold" />
-                    <span className="text-[10px] uppercase tracking-wider font-mono font-bold">FAA Certified Carrier</span>
+            {/* Column 1: Immersive 3D Aircraft Passenger Window */}
+            <div className="lg:col-span-5 relative flex items-center justify-center py-6">
+              <div className="cabin-window-outer gold-glow">
+                <div className="cabin-window-bezel">
+                  <div className="cabin-window-inner">
+                    <img
+                      src="/images/about-us.webp"
+                      alt="Aircraft Management Group Team on the tarmac"
+                      className="w-full h-full object-cover brightness-[0.8] hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="cabin-window-glass" />
+                    
+                    {/* Subtle Window Shade Handle Visual */}
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-1 rounded-full bg-white/20 z-20 pointer-events-none" />
                   </div>
-                  <p className="text-[11px] text-text-main/70 font-light">Part 135 on-demand flight operations between the US, Canada, and Worldwide.</p>
                 </div>
               </div>
+
+              {/* Floating FAA badge overlay overlapping the window corner */}
+              <div className="absolute -bottom-2 right-4 md:right-8 lg:-right-4 p-4 rounded-xl bg-navy-slate/95 backdrop-blur-md border border-text-main/10 shadow-2xl max-w-[280px] z-30 gold-glow">
+                <div className="flex items-center space-x-2 text-luxury-gold mb-1.5">
+                  <Star className="w-4 h-4 fill-luxury-gold" />
+                  <span className="text-[10px] uppercase tracking-[0.15em] font-mono font-bold">FAA Certified Carrier</span>
+                </div>
+                <p className="text-[11px] text-text-main/70 font-light leading-relaxed">Part 135 on-demand flight operations between the US, Canada, and Worldwide.</p>
+              </div>
             </div>
+
 
             {/* Column 2: text and credentials */}
             <div className="lg:col-span-7 space-y-6">
