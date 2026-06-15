@@ -311,24 +311,43 @@ export default function App() {
                     <div className="cabin-window-glass" />
                     <div className="cabin-window-sheen" />
                     
+                    {/* Subtle V-shaped pull-down pointer */}
+                    <div 
+                      className="cabin-window-pull-indicator"
+                      style={{ 
+                        opacity: blindHeight > 0 ? 0 : undefined,
+                        visibility: blindHeight > 0 ? 'hidden' : 'visible',
+                        transition: 'opacity 0.3s ease, visibility 0.3s ease'
+                      }}
+                    >
+                      <ChevronDown className="w-6 h-6 text-luxury-gold dark:text-luxury-champagne" strokeWidth={1.5} />
+                    </div>
+                    
                     {/* Interactive Pull-Down Window Blind */}
                     <div 
                       style={{ 
                         height: `${blindHeight}%`,
+                        minHeight: '40px',
                         transition: isDragging ? 'none' : 'height 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1)' 
                       }}
-                      className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#EAE9E1] to-[#C0BEB4] dark:from-[#222933] dark:to-[#111419] border-b-[8px] border-[#a5a399] dark:border-[#080a0d] z-30 shadow-2xl flex flex-col justify-end items-center pb-3"
+                      className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#EAE9E1] to-[#C0BEB4] dark:from-[#222933] dark:to-[#111419] border-b-[8px] border-[#a5a399] dark:border-[#080a0d] z-30 shadow-2xl flex flex-col justify-end items-center"
                     >
-                      {/* Pull Down Handle */}
+                      {/* Pull Down Trigger Zone (covers the entire visible bottom edge of the blind) */}
                       <div 
                         onMouseDown={handleMouseDown}
                         onTouchStart={handleTouchStart}
-                        className="w-20 h-4.5 rounded-full bg-[#bcbab0] dark:bg-[#1C222B] border border-[#a2a095] dark:border-[#2a2e38] shadow-md cursor-ns-resize flex items-center justify-center select-none active:scale-95 transition-transform"
+                        className="w-full cursor-ns-resize flex flex-col items-center justify-end pb-3 pt-2 select-none"
                         title="Drag down to close shade"
                       >
-                        <div className="w-10 h-1 rounded-full bg-white/30 dark:bg-white/10" />
+                        {/* Pull Down Handle */}
+                        <div 
+                          className="w-20 h-5 rounded-full bg-[#bcbab0] dark:bg-[#1C222B] border border-[#a2a095] dark:border-[#2a2e38] shadow-md flex items-center justify-center active:scale-95 transition-transform"
+                        >
+                          <div className="w-10 h-1 rounded-full bg-white/30 dark:bg-white/10" />
+                        </div>
                       </div>
                     </div>
+
 
                     {/* Left/Right Shade Tracks */}
                     <div className="absolute inset-y-0 left-0 w-0.5 bg-black/15 z-25 pointer-events-none" />

@@ -384,6 +384,37 @@ html:not(.dark) #contact textarea:focus {
   transform: translate(35%, 35%) rotate(-45deg);
 }
 
+/* Subtle, nearly transparent V-shaped pull-down pointer */
+.cabin-window-pull-indicator {
+  position: absolute;
+  top: 48px; /* Positioned just below the default open handle */
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 22;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cabin-window-outer:hover .cabin-window-pull-indicator {
+  opacity: 0.25; /* Very subtle, nearly transparent */
+  transform: translateX(-50%) translateY(0);
+  animation: pull-indicator-bounce 2s infinite ease-in-out;
+}
+
+@keyframes pull-indicator-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+
 /* Skeuomorphic pressure-relief vent hole (Breather Hole) */
 .cabin-window-glass::after {
   content: "";
